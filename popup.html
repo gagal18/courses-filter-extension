@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Subjects Selector</title>
+    <script src="popup.js" defer></script>
+    <style>
+      body {
+        width: 450px;
+        font-family: Arial, sans-serif;
+        padding: 10px;
+      }
+      h3 {
+        text-align: center;
+      }
+      .subject-item {
+        display: flex;
+        align-items: center;
+        padding: 5px;
+      }
+      input[type="checkbox"] {
+        margin-right: 10px;
+      }
+      button {
+        width: 100%;
+        padding: 5px;
+        margin-top: 10px;
+        cursor: pointer;
+      }
+      #saveSelection{
+        width: 70px;
+      }
+      #nav {
+        display: flex;
+        justify-content: space-between;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="nav">
+      <h3>Одбери Предмети за филтрирање</h3>
+      <button id="saveSelection">Зачувај</button>
+    </div>
+    <div id="subjectsContainer"></div>
+  </body>
+</html>
