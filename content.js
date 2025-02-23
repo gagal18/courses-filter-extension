@@ -19,12 +19,10 @@ async function checkAndExtractSubjects() {
             const list = dropdown.querySelectorAll('li');
 
             const sortedItems = Array.from(list).sort((a, b) => {
-                const textA = a.textContent.trim();
-                const textB = b.textContent.trim();
-
+                const textA = a.textContent.replace(/\s+/g, '');
+                const textB = b.textContent.replace(/\s+/g, '');
                 const isASelected = selectedSubjects.includes(textA);
                 const isBSelected = selectedSubjects.includes(textB);
-
                 if (isASelected && !isBSelected) return -1;
                 if (!isASelected && isBSelected) return 1;
 
@@ -34,7 +32,6 @@ async function checkAndExtractSubjects() {
             const ul = list[0].parentElement;
 
             ul.innerHTML = '';
-
             sortedItems.forEach(item => ul.appendChild(item));
         });
     });
@@ -52,7 +49,7 @@ async function extractSubjects() {
     if (!dropdown) return;
 
     let items = Array.from(dropdown.querySelectorAll("li"));
-    let subjects = items.map(item => item.innerText.trim()).filter(text => text);
+    let subjects = items.map(item => item.innerText).filter(text => text);
 
     if (subjects.length > 0) {
         chrome.storage.local.set({ subjects }, () => {
